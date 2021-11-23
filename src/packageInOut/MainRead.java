@@ -20,6 +20,10 @@ public class MainRead {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        catch (Exception e){
+            System.out.println("Something went wrong, possible reason");
+            e.printStackTrace();
+        }
         int count = 0;
         for (Contact contact : contacts) {
             if (count < 5) {
