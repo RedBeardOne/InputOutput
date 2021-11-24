@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class MainWrite {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try {
             createHelloWorld();
         } catch (IOException e) {
@@ -36,6 +36,7 @@ public class MainWrite {
             someFile.writeInt(12);
         }
     }
+
 
     private static void createHelloWorld() throws IOException {
         try (PrintWriter file = new PrintWriter(new FileOutputStream("Hello Java.txt"))) {

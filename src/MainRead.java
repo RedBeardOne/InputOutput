@@ -1,4 +1,5 @@
-package packageInOut;
+import packageInOut.Contact;
+import packageInOut.FilesRead;
 
 import java.io.IOException;
 import java.util.ArrayList;
