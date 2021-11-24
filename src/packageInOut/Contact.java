@@ -1,6 +1,8 @@
 package packageInOut;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     String name;
     String secondName;
     String number;

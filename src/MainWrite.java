@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class MainWrite {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try {
             createHelloWorld();
         } catch (IOException e) {
@@ -29,13 +29,38 @@ public class MainWrite {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            writeBin();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            readBin();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void writeBin() throws IOException {
-        try (DataOutputStream someFile = new DataOutputStream(new FileOutputStream("ata.bin"))) {
-            someFile.writeInt(12);
+    public static void writeBin() throws IOException {
+        try (DataOutputStream someFile = new DataOutputStream(
+                new FileOutputStream("ata.bin"))) {
+            someFile.writeInt(123);
+            someFile.writeUTF("Symbol");
+            someFile.writeBoolean(true);
+            someFile.writeChar('a');
         }
     }
+
+    public static void readBin() throws IOException {
+        try (DataInputStream someFile = new DataInputStream(new FileInputStream("ata.bin"))) {
+            System.out.println(someFile.readInt());
+            System.out.println( someFile.readUTF());
+            System.out.println(someFile.readBoolean());
+            System.out.println(someFile.readChar());
+        }
+    }
+
 
 
     private static void createHelloWorld() throws IOException {
