@@ -8,6 +8,7 @@ import java.util.List;
 
 public class MainRead {
     static int counter = 0;
+
     public static void main(String[] args) {
         Collection<String> collection = new ArrayList<>();
         List<Contact> contacts = new ArrayList<>();
@@ -66,14 +67,19 @@ public class MainRead {
             System.out.println("only name");
             System.out.println(contact.getName());
         }
-        MainRead test = new MainRead();
-        final File folder = new File("F:\\InputOutput");
-        test.listFilesForFolder(folder);
-        System.out.println("Total count of files in directory " + counter);
+        numberOfFiles();
     }
 
+    public static void numberOfFiles() {
+        int itemsInFile;
+        MainRead test = new MainRead();
+        final File folder = new File("F:\\InputOutput");
+        itemsInFile = test.listFilesForFolder(folder);
+        System.out.println("Total count of files in directory " + itemsInFile);
+        counter = 0;
+    }
 
-    public int listFilesForFolder(final File folder) {
+    private int listFilesForFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
                 listFilesForFolder(fileEntry);
