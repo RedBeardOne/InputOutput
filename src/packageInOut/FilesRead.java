@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 
 public class FilesRead {
 
-
     public Collection<String> filesRead() throws IOException {
         Collection<String> collection = new ArrayList<>();
         try (BufferedReader text = new BufferedReader(
