@@ -13,7 +13,7 @@ public class CopyPaste {
         }
         String address = args[0];
         try {
-            readWriteBigFilePerBit(address);
+            readWriteBigFile(address);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,8 +30,9 @@ public class CopyPaste {
             fos = new FileOutputStream(str);
             byte[] buffer = new byte[4096];
             int read = 0;
-            while ((read = fis.read(buffer)) > 0) {
-                fos.write(buffer);
+            int len = 0;
+            while ((read = fis.read(buffer)) !=-1) {
+                fos.write(buffer, 0, len);
             }
         } finally {
             if (fis != null) {
@@ -46,7 +47,7 @@ public class CopyPaste {
         System.out.println(timeElapsed);
     }
 
-    public static void readWriteBigFilePerBit(String address) throws IOException {
+    public static void readWriteBigFilePerByte(String address) throws IOException {
         long start = System.currentTimeMillis();
         String str = getName(address);
         try (FileInputStream fis = new FileInputStream(address)) {
@@ -61,6 +62,7 @@ public class CopyPaste {
         long timeElapsed = finish - start;
         System.out.println(timeElapsed);
     }
+
      public static void readWriteBigFileBuffer(String address) throws IOException{
          long start = System.currentTimeMillis();
          int read = 0;
